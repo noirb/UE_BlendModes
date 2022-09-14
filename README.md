@@ -67,6 +67,5 @@ To support the implementation of the above blendmodes, a few helper functions we
 
 | Function             | Description                                                                                                 |
 |----------------------|-------------------------------------------------------------------------------------------------------------|
-| `AlphaBlend`         | Performs a basic fade between two textures. Used in all blend functions to support the `Opacity` parameter. |
 | `HSLtoRGB`           | Converts a vec3 from the [HSL](https://en.wikipedia.org/wiki/HSL_and_HSV) colorspace back to RGB.           |
 | `RGBtoHSL`           | Converts a vec3 from the RGB colorspace to [HSL](https://en.wikipedia.org/wiki/HSL_and_HSV).                |
