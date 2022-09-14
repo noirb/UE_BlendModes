@@ -5,9 +5,9 @@ These have only been tested & evaluated in UE5, but it's very likely that they w
 
 ## What's Included
 
-23 new blend functions, and wrappers around the 14 built-in blend functions to include an `Opacity` parameter to allow you to adjust how much of the blend is applied to the final result.
+36 new blend functions, and wrappers around the 14 built-in blend functions to include an `Opacity` parameter to allow you to adjust how much of the blend is applied to the final result.
 
-In the material editor, all of the included functions can be found under `NB - Blends`, and the 18 new functions are also included under `Blends` along with the original built-in functions.
+In the material editor, all of the included functions can be found under `NB - Blends`, and the 36 new functions are also included under `Blends` along with the original built-in functions.
 
 ## Usage
 
@@ -31,15 +31,24 @@ All nodes have 3 inputs:
 | `Blend_Darken`       |                                                                            | Wrapper around [Blend_Darken](https://docs.unrealengine.com/5.0/en-US/blend-material-functions-in-unreal-engine/)      |
 | `Blend_DarkerColor`  | Returns whichever input is darker                                          | Operates in HSL colorspace                                                                                             |
 | `Blend_Difference`   | Subtracts `Base` image from `Blend` image                                  | Wrapper around [Blend_Difference](https://docs.unrealengine.com/5.0/en-US/blend-material-functions-in-unreal-engine/)  |
+| `Blend_Dissolve`     | Randomly selects pixels from `Blend` and `Base`                            | Requires `float4` inputs, kind of expensive (>100 instructions)                                                        |
 | `Blend_Divide`       | Divides `Base` by the `Blend` image                                        |                                                                                                                        |
 | `Blend_Exclusion`    |                                                                            | Wrapper around [Blend_Exclusion](https://docs.unrealengine.com/5.0/en-US/blend-material-functions-in-unreal-engine/)   |
+| `Blend_Extremity`    |                                                                            |                                                                                                                        |
+| `Blend_Far`          | Only accepts colors from `Blend` which exceed a set distance from `Base`   |                                                                                                                        |
+| `Blend_Frect`        | Intersection of `Freeze` and `Reflect`                                     |                                                                                                                        |
 | `Blend_Freeze`       |                                                                            |                                                                                                                        |
+| `Blend_Gleat`        | Intersection of `Glow` and `Heat`                                          |                                                                                                                        |
 | `Blend_Glow`         |                                                                            |                                                                                                                        |
+| `Blend_GrainExtract` |                                                                            |                                                                                                                        |
+| `Blend_GrainMerge`   | The reverse operation of `GrainExtract`                                    |                                                                                                                        |
 | `Blend_HardLight`    |                                                                            | Wrapper around [Blend_HardLight](https://docs.unrealengine.com/5.0/en-US/blend-material-functions-in-unreal-engine/)   |
 | `Blend_HardMix`      | Adds color components together; if > 1.0, then returns 1.0, else 0.0       |                                                                                                                        |
+| `Blend_Harmonic`     | Harmonic mean of `Base` and `Blend`                                        |                                                                                                                        |
 | `Blend_Heat`         | `Blend_Freeze` with the inputs swapped                                     |                                                                                                                        |
+| `Blend_Helow`        | Intersection of `Heat` and `Glow`                                          |                                                                                                                        |
 | `Blend_Hue`          | Applies the Hue of the `Blend` image to the `Base` image                   | Operates in HSL space                                                                                                  |
-| `Blend_Interpolation` | Sine-based blending, yields smooth results                                |                                                                                                                        |
+| `Blend_Interpolation`| Sine-based blending, yields smooth results                                 |                                                                                                                        |
 | `Blend_Lighten`      |                                                                            | Wrapper around [Blend_Lighten](https://docs.unrealengine.com/5.0/en-US/blend-material-functions-in-unreal-engine/)     |
 | `Blend_LighterColor` | Returns whichever input is lighter                                         | Operates in HSL colorspace                                                                                             |
 | `Blend_LinearBurn`   |                                                                            | Wrapper around [Blend_LinearBurn](https://docs.unrealengine.com/5.0/en-US/blend-material-functions-in-unreal-engine/)  |
@@ -48,15 +57,19 @@ All nodes have 3 inputs:
 | `Blend_Luminosity`   | Applies the Luminosity of the `Blend` image to the `Base` image            | Operates in HSL colorspace                                                                                             |
 | `Blend_Multiply`     | Simple Multiplicative Blending                                             |                                                                                                                        |
 | `Blend_MultiplyAdd`  | Yields similar color adjustments to `Multiply` without darkening the image |                                                                                                                        |
+| `Blend_Near`         | Only accepts colors from `Blend` which are under a set distance from `Base`|                                                                                                                        |
 | `Blend_Negation`     | Subtracts `Blend` image from `Base` and inverts the result                 |                                                                                                                        |
 | `Blend_Overlay`      |                                                                            | Wrapper around [Blend_Overlay](https://docs.unrealengine.com/5.0/en-US/blend-material-functions-in-unreal-engine/)     |
 | `Blend_PenumbraA`    |                                                                            |                                                                                                                        |
 | `Blend_PenumbraB`    | `Blend_PenumbraA` with the inputs swapped                                  |                                                                                                                        |
 | `Blend_Phoenix`      |                                                                            |                                                                                                                        |
 | `Blend_PinLight`     |                                                                            | Wrapper around [Blend_PinLight](https://docs.unrealengine.com/5.0/en-US/blend-material-functions-in-unreal-engine/)    |
+| `Blend_Power`        | Quadratic mean of `Base` and `Blend`                                       |                                                                                                                        |
+| `Blend_Reeze`        | Intersection of `Reflect` and `Freeze`. Like a less posterized `HardMix`.  |                                                                                                                        |
 | `Blend_Reflect`      |                                                                            |                                                                                                                        |
-| `Blend_Saturation`   | Applies the Saturattion of the `Blend` image to the `Base` image           |                                                                                                                        |
+| `Blend_Saturation`   | Applies the Saturation of the `Blend` image to the `Base` image            |                                                                                                                        |
 | `Blend_Screen`       |                                                                            | Wrapper around [Blend_Screen](https://docs.unrealengine.com/5.0/en-US/blend-material-functions-in-unreal-engine/)      |
+| `Blend_Sine`         | `sin(Base + Blend) * Pi/2`                                                 |                                                                                                                        |
 | `Blend_Softlight`    |                                                                            | Wrapper around [Blend_Softlight](https://docs.unrealengine.com/5.0/en-US/blend-material-functions-in-unreal-engine/)   |
 | `Blend_Subtract`     | Subtracts `Blend` image from `Base`                                        |                                                                                                                        |
 | `Blend_VividLight`   |                                                                            |                                                                                                                        |
