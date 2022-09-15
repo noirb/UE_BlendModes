@@ -7,7 +7,7 @@ These have only been tested & evaluated in UE5, but it's very likely that they w
 
 36 new blend functions, and wrappers around the 14 built-in blend functions to include an `Opacity` parameter to allow you to adjust how much of the blend is applied to the final result.
 
-In the material editor, all of the included functions can be found under `NB - Blends`, and the 36 new functions are also included under `Blends` along with the original built-in functions.
+In the material editor, all of the included functions can be found under `NB - Blends` in the function library.
 
 ## Usage
 
